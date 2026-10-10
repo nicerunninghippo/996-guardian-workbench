@@ -2,12 +2,15 @@
 
 A browser workbench for automation that can explain and recover from a failed step. Derived from real development of the Windows 996 Guardian assistant, this project ports its route priorities, verified arrival gates, bounded waits and instance separation into a reproducible simulator.
 
-**Status:** preparation build for TestSprite Season4. The entry has not yet been submitted. TestSprite runs and GitHub PR evidence will be linked only after they actually exist.
+**Status:** preparation build for TestSprite Season4. The entry has not yet been submitted. The first TestSprite browser run passed all five selected cases; GitHub PR integration is awaiting scoped permission confirmation.
 
 ## Live application
 
-Intended hosting URL: https://guardian-workbench-s4.lucky-crane-6426.chatgpt.site
-Deployment is being prepared; see docs/submission-status.md for verified state.
+Live URL: https://guardian-workbench-s4.lucky-crane-6426.chatgpt.site
+
+Public repository: https://github.com/nicerunninghippo/996-guardian-workbench
+
+Public deployment verified on 2026-10-10. See docs/submission-status.md for test and submission state.
 
 ## Try it
 
@@ -42,7 +45,9 @@ Open http://127.0.0.1:4173. Local preview is for development; competition testin
 
 ## CI and TestSprite
 
-The engine workflow runs on pushes and PRs. TestSprite integration will use its official GitHub App or GitHub Actions after the portal suite is generated. A working deployment must precede suite generation. No API keys belong in the repository.
+The engine workflow runs on pushes and PRs. The first TestSprite browser run on 2026-10-10 passed 5/5 cases: exact-coordinate entry, missing entrance fallback, unanswered click deadline, arrival timeout without refunding the spent entry budget, and Automatic mode restoration. Run ID: `afd9ec50-0fc2-4c04-a2ca-fd4bdf337c2e`.
+
+The public GitHub checkout also passed all 25 Node tests and matched the local runtime source after newline normalization. TestSprite's GitHub integration is pending explicit approval of access to this dedicated repository. Browser-run results do not constitute a PR check. No API keys belong in the repository.
 
 Submission requires a public repository, live URL, real TestSprite PR check and a Discord post. Schedule and requirements: https://www.testsprite.com/hackathon-s4 . Currently published project window: Oct16–22,2026, closing23:59 Pacific; final schedule is confirmed in the official Discord.
 
