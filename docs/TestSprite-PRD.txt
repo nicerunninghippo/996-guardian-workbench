@@ -1,0 +1,55 @@
+996 Guardian Automation Workbench — Product Requirements
+Public URL: https://guardian-workbench-s4.lucky-crane-6426.chatgpt.site
+
+This is a browser-local automation policy simulator. No sign-in is required.
+No real game or Windows device is connected. All resources and combat are simulated.
+Tests must verify real browser controls and resulting policy outcomes, not just page headings.
+Use a fresh browser context or reset the selected instance with Load scenario.
+Explicit +1s/+10s/+60s buttons advance virtual time; do not wait minutes in real time.
+
+Primary controls have data-testid: instance-select, goal-x-input, goal-y-input,
+level-input, save-config, scenario-select, run-scenario, start-button, pause-button,
+advance10-button, advance60-button, auto-mode, event-log, entries-count, clock.
+
+Please begin with at most 8 focused test cases to use the available trial budget:
+
+1. Healthy route: Agent01, default level79 and goal17:37. Load Healthy route,
+Start guardian, click +10s twice. At virtual20s entries=1 and mode=Automatic.
+Event log must show exact coordinate verification before the Base entrance click.
+
+2. Missing entrance: Load Primary entrance missing, Start, click +60s twice.
+Event log must contain the Base60s search fallback and Forest arrival.
+Do not require Forest to remain the current target at120s, because a BOSS may have started.
+
+3. No click feedback: Load Click without feedback, Start, click +60s.
+There is one Base portal click; a12s deadline releases ownership and Forest can enter.
+
+4. Arrival timeout: Load Entry without arrival, Start, click +60s.
+There is one confirmed Base entry, followed by a25s arrival timeout and Forest fallback.
+The spent Base entry budget is not refilled by that failure.
+
+5. Instance settings: Save Agent01 goal17:37 and Agent02 goal20:35.
+Switch instances and reload. Each retains its own saved coordinates. Save pauses the
+edited agent. Run Agent01 to10s; Agent02 clock remains0 and entries remain0.
+
+6. Eligibility: Save level78 for Agent01. Load Healthy route and Start.
+Advance20s; first route entry must be Forest, never Base.
+
+7. Automatic restoration: At default level79, load Automatic mode turns off.
+Start, advance40s. Evidence must show observed Hanging, a single restore click,
+then verified Automatic. An activity label alone does not count as enabled mode.
+
+8. Pause: Start and advance10s, then Pause. Agent state=Paused and step buttons
+are disabled. Resume and advance10s; the same instance continues from its prior clock.
+
+Optional later coverage: reward-overlay blank-area dismissal, token-ready BOSS
+priority and single resource deduction, duplicate-priority validation, JSON replay.
+
+Configurations are persisted in browser localStorage. Runtime state resets on reload.
+Loading a scenario resets only the chosen instance and does not automatically start it.
+Goal fields accept integer0..99. Radius0..2 only authorizes a small neighborhood after
+the exact goal has been observed. Level79 permits Base;78 permits Forest.
+Maintenance is deferred while in town, then checks every14400 virtual seconds.
+Export bundles are simulator data, not private logs. Import validates the replay format.
+
+A passed test proves simulator/UI behavior, not real OCR, OS inputs or combat.
