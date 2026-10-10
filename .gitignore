@@ -1,0 +1,10 @@
+node_modules/
+.env
+.env.*
+!.env.example
+artifacts/
+.openai/*
+!.openai/hosting.json
+*.log
+*.exe
+*.zip
