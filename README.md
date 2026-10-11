@@ -2,7 +2,7 @@
 
 A browser workbench for automation that can explain and recover from a failed step. Derived from real development of the Windows 996 Guardian assistant, this project ports its route priorities, verified arrival gates, bounded waits and instance separation into a reproducible simulator.
 
-**Status:** preparation build for TestSprite Season4. The entry has not yet been submitted. The first TestSprite browser run passed all five selected cases; GitHub PR integration is awaiting scoped permission confirmation.
+**Status:** preparation build for TestSprite Season4. The entry has not yet been submitted. The first TestSprite browser run passed all five selected cases; GitHub integration is connected and a PR trigger is active. A real PR check currently reports a Free-plan entitlement blocker; no CI tests ran. This conflicts with the billing page advertising one free PR-testing repository and needs official clarification.
 
 ## Live application
 
@@ -47,7 +47,9 @@ Open http://127.0.0.1:4173. Local preview is for development; competition testin
 
 The engine workflow runs on pushes and PRs. The first TestSprite browser run on 2026-10-10 passed 5/5 cases: exact-coordinate entry, missing entrance fallback, unanswered click deadline, arrival timeout without refunding the spent entry budget, and Automatic mode restoration. Run ID: `afd9ec50-0fc2-4c04-a2ca-fd4bdf337c2e`.
 
-The public GitHub checkout also passed all 25 Node tests and matched the local runtime source after newline normalization. TestSprite's GitHub integration is pending explicit approval of access to this dedicated repository. Browser-run results do not constitute a PR check. No API keys belong in the repository.
+The public GitHub checkout also passed all 25 Node tests and matched the local runtime source after newline normalization. TestSprite is connected with access limited to this dedicated repository. The `preview-ready` CI job compares every deployed `dist` asset with the checkout before the configured PR testing signal. Current deployment matches; a deliberately changed engine was correctly rejected. HTML comparison allows only a hash-verified CDN bootstrap with its dynamic identifiers normalized.
+
+The URL is a shared Sites deployment, not automatic per-PR hosting. Application changes require publishing the matching Sites runtime and rerunning the readiness job. Simultaneous PRs with different runtimes need separate previews. The active TestSprite PR rule watches `preview-ready`. Actual check https://github.com/nicerunninghippo/996-guardian-workbench/runs/114374994325 failed with "GitHub CI runs not on the Free plan. No tests were run." The billing UI advertises one free repository, so entitlement remains unresolved. Browser-run results do not constitute a passing PR check. No API keys belong in the repository.
 
 Submission requires a public repository, live URL, real TestSprite PR check and a Discord post. Schedule and requirements: https://www.testsprite.com/hackathon-s4 . Currently published project window: Oct16–22,2026, closing23:59 Pacific; final schedule is confirmed in the official Discord.
 
